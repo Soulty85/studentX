@@ -37,7 +37,7 @@
         }
         
         public function updateEvaluation($id, $nom, $semestre, $type) {
-            $sql = "UPDATE evaluations SET nom = :nom, semestre = :semestre, evaluations.type = :type_eval
+            $sql = "UPDATE evaluations SET nom = :nom, semestre = :semestre, type = :type_eval
                     WHERE  evaluation_id = :id";
 
             
@@ -66,7 +66,7 @@
 
                 return $statement->rowCount() > 0;
 
-            } catch(PDOExeption $e) {
+            } catch(PDOException $e) {
                 error_log("Erreur lors de la suppression de l'evaluation " . $e);
             }
 

@@ -12,7 +12,6 @@ function affichierChamps() {
     }
 }
 
-// 
 
 const update = document.querySelectorAll(".btn-edit");
 update.forEach(boutton => {
@@ -67,3 +66,8 @@ deleteEval.forEach(boutton => {
         document.getElementById('idEvalDel').value = id;
     });
 });
+
+
+
+
+

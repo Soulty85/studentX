@@ -15,7 +15,7 @@
             <h5>Gérer les étudiants</h5>
           </div>
           <div class="card-footer d-flex justify-content-between align-items-center">
-            <a class="small text-white stretched-link" href="listeEtudiants">Accéder</a>
+            <a class="small text-white stretched-link" href="listeUsers">Accéder</a>
             <i class="fas fa-angle-right"></i>
           </div>
         </div>
@@ -39,7 +39,7 @@
             <h5>Gérer les évaluations</h5>
           </div>
           <div class="card-footer d-flex justify-content-between align-items-center">
-            <a class="small text-white stretched-link" href="listeEvaluations">Accéder</a>
+            <a class="small text-white stretched-link" href="listeEval">Accéder</a>
             <i class="fas fa-angle-right"></i>
           </div>
         </div>

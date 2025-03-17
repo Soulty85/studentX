@@ -34,7 +34,7 @@
                 $typeEval = $_POST['type'];
                 $idEval = $_POST['id'];
                 
-                $test = $this->evaluationRepository->updateEvaluation($idEval, $nomEval, $semestreEval, $typeEval);
+                $this->evaluationRepository->updateEvaluation($idEval, $nomEval, $semestreEval, $typeEval);
                 $this->getAllEval();
             }
         }
