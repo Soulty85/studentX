@@ -10,29 +10,17 @@
         </a>
 
         <!-- Gestion des Étudiants -->
-        <div class="sb-sidenav-menu-heading text-uppercase text-muted small">Gestion des Étudiants</div>
+        <div class="sb-sidenav-menu-heading text-uppercase text-muted small">Gestion des Utilisateurs</div>
         <a class="nav-link d-flex align-items-center py-2 px-3 rounded hover-bg-light" href="listeUsers">
-          <i class="fas fa-users me-2"></i> Liste des étudiants
+          <i class="fas fa-users me-2"></i> Gestion des utilisateurs
         </a>
 
         <!-- Gestion des Évaluations -->
         <div class="sb-sidenav-menu-heading text-uppercase text-muted small">Gestion des Évaluations</div>
         <a class="nav-link d-flex align-items-center py-2 px-3 rounded hover-bg-light" href="listeEval">
-          <i class="fas fa-list me-2"></i> Liste des évaluations
+          <i class="fas fa-list me-2"></i> Gestion des évaluations
         </a>
 
-        <!-- Gestion des Notes -->
-        <div class="sb-sidenav-menu-heading text-uppercase text-muted small">Gestion des Notes</div>
-        <a class="nav-link d-flex align-items-center py-2 px-3 rounded hover-bg-light" href="liste_notes.html">
-          <i class="fas fa-file-alt me-2"></i> Liste des notes
-        </a>
-
-        <!-- Paramètres -->
-        <div class="sb-sidenav-menu-heading text-uppercase text-muted small">Paramètres</div>
-        <a class="nav-link d-flex align-items-center py-2 px-3 rounded hover-bg-light" href="gestion_utilisateurs.html">
-          <i class="fas fa-cogs me-2"></i> Gestion des utilisateurs
-        </a>
-      </div>
     </div>
   </nav>
 </div>
