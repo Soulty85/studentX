@@ -132,7 +132,7 @@
             
             $this->setErrorAndRedirect(
                 "Vous avez ete deconnecte avec succes",
-                "Deconneexion reussi",
+                "Deconnexion reussi",
                 "home"
             );
         }
