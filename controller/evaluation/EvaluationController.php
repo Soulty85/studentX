@@ -18,13 +18,17 @@
 
                 
                 $this->evaluationRepository->addEvaluation($nomEval, $semestreEval, $typeEval);
-                $this->getAllEval();
+                $this->getAllEvalAndRedirect();
             }
         }
 
+        public function getAllEvalAndRedirect() {
+            $evaluations = $this->getAllEval();
+            require_once("../../view/pages/admin/evaluation/liste.php");
+        }
         public function getAllEval() {
             $evaluations = $this->evaluationRepository->getAllEval();
-            require_once("../../view/pages/admin/evaluation/liste.php");
+            return $evaluations;
         }
         
         public function updateEvaluation() {
@@ -35,7 +39,7 @@
                 $idEval = $_POST['id'];
                 
                 $test = $this->evaluationRepository->updateEvaluation($idEval, $nomEval, $semestreEval, $typeEval);
-                $this->getAllEval();
+                $this->getAllEvalAndRedirect();
             }
         }
 
@@ -44,7 +48,7 @@
                 $id = $_POST['id'];
 
                 $this->evaluationRepository->deleteEval($id);
-                $this->getAllEval();
+                $this->getAllEvalAndRedirect();
             }
         }
     }

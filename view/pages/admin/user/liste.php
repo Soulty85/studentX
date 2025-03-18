@@ -51,8 +51,17 @@
                           data-bs-target="#editUserModal">
                     Modifier
                   </button>
-
-                  <button class="btn btn-danger btn-delete" data-id="<?= $etudiant['user_id'] ?>" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Supprimer</button>        </td>
+                  
+                  <button class="btn btn-danger btn-delete" data-id="<?= $etudiant['user_id'] ?>" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Supprimer</button>  
+                  
+                  <form action="NoteMainController" method="GET">
+                    <input type="hidden" value="<?= $etudiant['user_id'] ?>" name="id">
+                    
+                    <button type="submit" name="getNote" value="1" class="btn btn-primary btn-note" data-id="<?= $etudiant['user_id'] ?>">
+                        Gérer notes
+                    </button>
+                  </form>     
+                </td>
               </tr>
             <?php endforeach; ?>
           </tbody>

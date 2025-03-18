@@ -175,7 +175,12 @@
 
         public function getAllStudent() {
             $etudiants = $this->userRepository->getAllStudent(1);
-            require_once '../../view/pages/admin/user/liste.php';
+            require_once('../../view/pages/admin/user/liste.php');
+        }
+
+        public function getById($id) {
+            $etudiants = $this->userRepository->getById($id);
+            return $etudiants;
         }
         
         public function updateStudent() {
@@ -188,7 +193,7 @@
                 $matricule = $_POST['matricule'];
                 $telephone = $_POST['tel'];
                 $adresse = $_POST['adresse'];
-
+                
                 $this->userRepository->updateStudent($id, $prenom, $nom, $email,$matricule, $telephone, $adresse, $updatedBy);
                 $this->getAllStudent();
             }
