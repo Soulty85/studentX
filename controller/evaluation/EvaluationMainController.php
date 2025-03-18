@@ -19,7 +19,7 @@
 
     //
     if (isset($_GET['page'])) {
-        $evaluationController->getAllEval();
+        $evaluationController->getAllEvalAndRedirect();
     }
 
 ?>

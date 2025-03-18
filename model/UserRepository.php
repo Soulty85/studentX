@@ -107,7 +107,7 @@
         {
             $sql = "SELECT users.user_id, users.prenom, users.nom, users.email,
                     etudiants.matricule, etudiants.tel, etudiants.adresse
-                    from users 
+                    FROM users 
                     JOIN etudiants
                     ON users.user_id = etudiants.user_id
                     WHERE users.etat = :etat ";
@@ -129,12 +129,19 @@
         //Récupérer un user via son id
         public function getById(int $id)
         {
-            $sql = "SELECT * FROM users WHERE id = :id";
-
+            $sql = "SELECT users.user_id, etudiants.etudiant_id, users.prenom, users.nom, users.email,
+                    etudiants.matricule, etudiants.tel, etudiants.adresse
+                    FROM users 
+                    JOIN etudiants
+                    ON users.user_id = etudiants.user_id
+                    WHERE users.user_id = :id";
+            
             try {
                 $statement = $this->db->prepare($sql);
-                $statement->bindParam(':id', $id, PDO::PARAM_INT);
-                $statement->execute();
+                $statement->execute([
+                    'id' => $id,
+                ]);
+                
                 return $statement->fetch(PDO::FETCH_ASSOC) ?: null;
             
             } catch (PDOException $error) {

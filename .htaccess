@@ -6,12 +6,14 @@ RewriteRule ^admin$ admin.php
 RewriteRule ^home$ index.php
 
 #----------- Route View -----------
-RewriteRule ^listeUsers$ controller/user/UserMainController.php?page=etudiants
-RewriteRule ^listeEval$ controller/evaluation/EvaluationMainController.php?page=evaluation
+RewriteRule ^listeUsers$ controller/user/UserMainController.php?page
+RewriteRule ^listeEval$ controller/evaluation/EvaluationMainController.php?page
 
 #----------- Route Controller -----------
 RewriteRule ^userMainController$  controller/user/UserMainController.php
 RewriteRule ^evalMainController$  controller/evaluation/EvaluationMainController.php
+RewriteRule ^NoteMainController$  controller/note/NoteMainController.php
 
 #----------- Route Model -----------
 RewriteRule ^UserRepository$  model/UserRepository.php
+    

@@ -32,41 +32,42 @@
                 <th>Adresse</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($etudiants as $etudiant): ?>
-                <tr>
-                    <td><?= $etudiant['user_id'] ?></td>
-                    <td><?= $etudiant['nom'] ?></td>
-                    <td><?= $etudiant['prenom'] ?></td>
-                    <td><?= $etudiant['email'] ?></td>
-                    <td><?= $etudiant['matricule'] ?></td>
-                    <td><?= $etudiant['tel'] ?></td>
-                    <td><?= $etudiant['adresse'] ?></td>
-                    <td>
-                        <!-- Modifier button -->
-                        <button class="btn btn-warning btn-sm btn-edit" 
-                                data-id="<?= $etudiant['user_id'] ?>" 
-                                data-nom="<?= $etudiant['nom'] ?>" 
-                                data-prenom="<?= $etudiant['prenom'] ?>" 
-                                data-email="<?= $etudiant['email'] ?>" 
-                                data-matricule="<?= $etudiant['matricule'] ?>" 
-                                data-tel="<?= $etudiant['tel'] ?>" 
-                                data-adresse="<?= $etudiant['adresse'] ?>" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#editUserModal">
-                            Modifier
-                        </button>
-
-                        <!-- Supprimer button -->
-                        <button class="btn btn-danger btn-sm btn-delete" 
-                                data-id="<?= $etudiant['user_id'] ?>" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#confirmDeleteModal">
-                            Supprimer
-                        </button>
-                    </td>
-                </tr>
+          </thead>
+          <tbody>
+            <?php foreach($etudiants as $etudiant): ?>
+              <tr>
+                <td><?= $etudiant['user_id'] ?></td>
+                <td><?= $etudiant['nom'] ?></td>
+                <td><?= $etudiant['prenom'] ?></td>
+                <td><?= $etudiant['email'] ?></td>
+                <td><?= $etudiant['matricule'] ?></td>
+                <td><?= $etudiant['tel'] ?></td>
+                <td><?= $etudiant['adresse'] ?></td>
+                <td>
+                  <button class="btn btn-warning btn-edit" 
+                          data-id="<?= $etudiant['user_id'] ?>" 
+                          data-nom="<?= $etudiant['nom'] ?>" 
+                          data-prenom="<?= $etudiant['prenom'] ?>" 
+                          data-email="<?= $etudiant['email'] ?>" 
+                          data-matricule="<?= $etudiant['matricule'] ?>" 
+                          data-tel="<?= $etudiant['tel'] ?>" 
+                          data-adresse="<?= $etudiant['adresse'] ?>" 
+                          data-bs-toggle="modal" 
+                          data-bs-target="#editUserModal">
+                    Modifier
+                  </button>
+                  
+                  <button class="btn btn-danger btn-delete" data-id="<?= $etudiant['user_id'] ?>" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Supprimer</button>  
+                  
+                  <form action="NoteMainController" method="GET">
+                    <input type="hidden" value="<?= $etudiant['user_id'] ?>" name="id">
+                    
+                    <button type="submit" name="getNote" value="1" class="btn btn-primary btn-note" data-id="<?= $etudiant['user_id'] ?>">
+                        Gérer notes
+                    </button>
+                  </form>     
+                </td>
+              </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
