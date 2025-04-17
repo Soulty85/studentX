@@ -1,4 +1,11 @@
 <?php
+if(!$_SESSION["email"]){
+    header(
+        "Location:login?error=1&message=" 
+        . urlencode($message) . 
+        "&title=" . urlencode($title) 
+    );
+}
     require_once("EvaluationController.php");
     $evaluationController = new EvaluationController();
     

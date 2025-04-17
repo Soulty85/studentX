@@ -4,6 +4,8 @@
 <?php require_once(realpath(__DIR__ . "/../../../sections/admin/head.php")); ?>
 
   <body class="sb-nav-fixed">
+  <?php require_once(realpath(__DIR__ . "/../../../../sections/admin/session.php"))?>
+
     <!-- Section Menu Haut -->
     <?php require_once(realpath(__DIR__ . "/../../../sections/admin/menuHaut.php")); ?>
 

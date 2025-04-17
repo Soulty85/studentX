@@ -1,7 +1,13 @@
 <?php 
     session_start();
     require_once("NoteController.php");
-
+    if(!$_SESSION["email"]){
+        header(
+            "Location:login?error=1&message=" 
+            . urlencode($message) . 
+            "&title=" . urlencode($title) 
+        );
+    }
     $noteController = new NoteController();
     
     if (isset($_POST['addNote'])) {

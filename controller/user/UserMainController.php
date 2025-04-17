@@ -1,8 +1,11 @@
 <?php 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
+if(!$_SESSION["email"]){
+    header(
+        "Location:login?error=1&message=" 
+        . urlencode($message) . 
+        "&title=" . urlencode($title) 
+    );
+}
     require_once("UserController.php");
     
     // creation d'un objet UserController
