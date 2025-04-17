@@ -1,5 +1,4 @@
 <?php 
-    session_start();
     require_once('../../model/EvaluationRepository.php');
     
     class EvaluationController
@@ -15,7 +14,7 @@
                 $nomEval = $_POST['nom'];
                 $semestreEval = $_POST['semestre'];
                 $typeEval = $_POST['type'];
-
+                
                 
                 $this->evaluationRepository->addEvaluation($nomEval, $semestreEval, $typeEval);
                 $this->getAllEvalAndRedirect();
@@ -26,6 +25,7 @@
             $evaluations = $this->getAllEval();
             require_once("../../view/pages/admin/evaluation/liste.php");
         }
+
         public function getAllEval() {
             $evaluations = $this->evaluationRepository->getAllEval();
             return $evaluations;
@@ -46,7 +46,7 @@
         public function deleteEvaluation() {
             if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                 $id = $_POST['id'];
-
+                
                 $this->evaluationRepository->deleteEval($id);
                 $this->getAllEvalAndRedirect();
             }

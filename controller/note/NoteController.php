@@ -1,7 +1,4 @@
 <?php 
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
-    
     session_start();
     require_once("../../model/NoteRepository.php");
     require_once('../user/UserController.php');
@@ -22,7 +19,7 @@
             
             $userController = new UserController();
             $evaluationController = new EvaluationController();
-
+            
             $etudiant = $userController->getById($user_id);
             $evaluations = $evaluationController->getAllEval();
             $notes = $this->noteRepository->getNote($user_id); 
@@ -42,8 +39,25 @@
 
             
             $last = $this->noteRepository->addNote($idEtd, $idEval, $note); 
-            header("Location: NoteMainController?getNote=1&id=" . $idUser);
+            header("Location: noteMainController?getNote=1&id=" . $idUser);
             exit();
+        }
+
+        public function updateNote() {
+            $idNote = $_POST['id'];
+            $note = $_POST['note'];
+            $idUser = intval($_SESSION['etdId']);
+
+            $this->noteRepository->updateNote($idNote, $note);
+            header("Location: noteMainController?getNote=1&id=" . $idUser);
+
+        }
+
+        public function deleteNote() {
+            $id = $_POST["id"];
+            $idUser = intval($_SESSION['etdId']);
+            $this->noteRepository->deleteNotel($id);
+            header("Location: noteMainController?getNote=1&id=" . $idUser);
         }
     }
 

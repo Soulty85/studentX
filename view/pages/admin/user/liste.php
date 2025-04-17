@@ -2,6 +2,7 @@
 <html lang="en">
   <!-- Section Head -->
   <?php require_once(realpath(__DIR__ . "/../../../sections/admin/head.php")); ?>
+
   <body class="sb-nav-fixed">
     <!-- Section Menu Haut -->
     <?php require_once(realpath(__DIR__ . "/../../../sections/admin/menuHaut.php")); ?>
@@ -44,7 +45,7 @@
                 <td><?= $etudiant['tel'] ?></td>
                 <td><?= $etudiant['adresse'] ?></td>
                 <td>
-                  <button class="btn btn-warning btn-edit" 
+                  <button class="btn btn-warning 3" 
                           data-id="<?= $etudiant['user_id'] ?>" 
                           data-nom="<?= $etudiant['nom'] ?>" 
                           data-prenom="<?= $etudiant['prenom'] ?>" 
@@ -59,10 +60,10 @@
                   
                   <button class="btn btn-danger btn-delete" data-id="<?= $etudiant['user_id'] ?>" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Supprimer</button>  
                   
-                  <form action="NoteMainController" method="GET">
+                  <form action="noteMainController" method="GET">
                     <input type="hidden" value="<?= $etudiant['user_id'] ?>" name="id">
                     
-                    <button type="submit" name="getNote" value="1" class="btn btn-primary btn-note" data-id="<?= $etudiant['user_id'] ?>">
+                    <button type="submit" name="getNote" class="btn btn-primary btn-note" data-id="<?= $etudiant['user_id'] ?>">
                         Gérer notes
                     </button>
                   </form>     

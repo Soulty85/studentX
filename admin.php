@@ -4,6 +4,8 @@
   <?php require_once("view/sections/admin/head.php") ?>
 
   <body class="sb-nav-fixed">
+  <?php require_once("view/sections/admin/verifierSession.php")?>
+
     <!-- Section Menu Haut -->
     <?php require_once("view/sections/admin/menuHaut.php") ?>
 

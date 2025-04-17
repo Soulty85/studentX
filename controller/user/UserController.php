@@ -137,22 +137,6 @@
             );
         }
 
-        // Permet de valider le formulaire d'enregistrement d'un utilisateur
-        private function validateRegisterField($email, $password)
-        {
-            if (empty($email) || empty($password)) {
-                return "Tous les champs sont requis.";
-            }
-            
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                return "Email invalide.";
-            }
-            
-            if (strlen($password) < 8) {
-                return "Le mot de passe doit conteneir au moins 8 caractères.";
-            }
-        }
-
         public function register(){
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $nom = $_POST['nom'];
@@ -170,6 +154,7 @@
                     $this->userRepository->registerStudent($userId, $matricule, $telephone, $adresse, $createdBy);
                     $this->getAllStudent();
                 }
+                
             }
         }
 

@@ -14,6 +14,11 @@
         exit(); 
     }
 
+    if (isset($_POST['deleteNote'])) {
+        $noteController->deleteNote();
+        exit(); 
+    }
+
     
     if (isset($_GET['getNote'])) {
         $user_id = $_GET['id'] ?? $_SESSION['etdId'] ?? null; 

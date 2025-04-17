@@ -12,7 +12,7 @@ RewriteRule ^listeEval$ controller/evaluation/EvaluationMainController.php?page
 #----------- Route Controller -----------
 RewriteRule ^userMainController$  controller/user/UserMainController.php
 RewriteRule ^evalMainController$  controller/evaluation/EvaluationMainController.php
-RewriteRule ^NoteMainController$  controller/note/NoteMainController.php
+RewriteRule ^noteMainController$  controller/note/NoteMainController.php
 
 #----------- Route Model -----------
 RewriteRule ^UserRepository$  model/UserRepository.php

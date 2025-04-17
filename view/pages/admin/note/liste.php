@@ -45,8 +45,23 @@
                                     <td><?= $evaluation['semestre'] ?></td>
                                     <td><?= $evaluation['type'] ?></td>
                                     <td><?= $evaluation['note'] ?? 'Pas de note' ?></td>
+                                    <td><?= $evaluation['note'] ?? 'Pas de note' ?></td>
                                     <td>
-                                        <button class="btn btn-warning">Modifier Note</button>
+                                        <form action="noteMainController" method="GET">
+                                            <input type="hidden" value="<?= $etudiant['user_id'] ?>" name="id">
+                                            <input type="hidden" value="<?= $evaluation['note_id'] ?>" name="idNote">
+                                            
+                                            <button type="button" 
+                                                    class="btn btn-primary btn-edit-note" 
+                                                    data-id="<?= $evaluation['note_id'] ?>" 
+                                                    data-bs-toggle="modal" 
+                                                    data-bs-target="#editNoteModal">
+                                                Modifier notes
+                                            </button>
+
+                                        </form> 
+                                        
+                                        <button class="btn btn-danger btn-deleteNote" data-id="<?= $evaluation['note_id'] ?>" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Supprimer</button>  
 
                                     </td>
                                 </tr>
@@ -64,18 +79,8 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST" action="NoteMainController">
+                                <form method="POST" action="noteMainController">
                                     <input type="hidden" name="etd" value="<?= $_SESSION['etdId'] ?>">
-
-                                    <!-- Sélection de l'évaluation -->
-                                    <div class="mb-3">
-                                        <label for="evaluationSelect" class="form-label">Sélectionner une évaluation</label>
-                                        <select class="form-select" id="evaluationSelect" name="evaluation" required>
-                                            <?php foreach ($evaluations as $evaluation): ?>
-                                                <option value="<?= $evaluation['evaluation_id'] ?>"><?= $evaluation['nom'] ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
 
                                     <!-- Input pour la note -->
                                     <div class="mb-3">
@@ -91,6 +96,53 @@
                     </div>
                 </div>
 
+                <!-- Modal de modification de note -->
+                <div class="modal fade" id="editNoteModal" tabindex="-1" aria-labelledby="editNoteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <form action="noteMainController" method="POST">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="editNoteModalLabel">Modifier la note</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                            </div>
+                            <div class="modal-body">
+                            <input type="hidden" name="id" id="editNoteId">
+                            <div class="mb-3">
+                                <label for="editNoteValue" class="form-label">Nouvelle note (0 à 20)</label>
+                                <input type="number" class="form-control" name="note" id="editNoteValue" min="0" max="20" required>
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="submit" name="updateNote" class="btn btn-primary">Mettre à jour</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Modal pour suprimer une note -->
+                <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmer la suppression</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="noteMainController" method="POST">
+                            <input type="hidden" name="id" id="idNoteDel">
+                            <p>Êtes-vous sûr de vouloir supprimer cet étudiant ? Cette action est irréversible.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-danger" name="deleteNote">Supprimer</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Section Footer -->
                 <?php require_once(realpath(__DIR__ . "/../../../sections/admin/footer.php")) ?>
             </div>
@@ -98,5 +150,7 @@
 
         <!-- Section Scripts -->
         <?php require_once(realpath(__DIR__ . "/../../../sections/admin/script.php")) ?>
+
+        <script src="public/js/users/test.js" ></script>
     </body>
 </html>
